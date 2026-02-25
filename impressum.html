@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum – TapStock</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A84FF;
+            --primary-dark: #0066CC;
+            --accent: #30D158;
+            --dark: #0D0D0F;
+            --dark-secondary: #1C1C1E;
+            --dark-tertiary: #2C2C2E;
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-tertiary: rgba(255, 255, 255, 0.5);
+            --gradient-1: linear-gradient(135deg, #0A84FF 0%, #5E5CE6 100%);
+            --radius: 20px;
+            --radius-sm: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', -apple-system, sans-serif;
+            background: var(--dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            background: rgba(13, 13, 15, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 1.25rem;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-1);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        .back-link svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 140px 40px 80px;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-header {
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .page-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .content-section {
+            background: var(--dark-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
+            padding: 40px;
+            margin-bottom: 24px;
+        }
+
+        .content-section h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .content-section p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .content-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .content-section a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .content-section a:hover {
+            opacity: 0.8;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 8px;
+        }
+
+        .info-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .info-label {
+            color: var(--text-tertiary);
+            min-width: 120px;
+        }
+
+        .info-value {
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .footer-links a {
+            color: var(--text-tertiary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .copyright {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 20px;
+            }
+
+            main {
+                padding: 120px 20px 60px;
+            }
+
+            .content-section {
+                padding: 24px;
+            }
+
+            .info-row {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .info-label {
+                min-width: auto;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+                padding: 30px 20px;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">
+            <div class="logo-icon">TS</div>
+            TapStock
+        </a>
+        <a href="index.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Zurück zur Startseite
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="page-header">
+            <div class="section-label">Legal</div>
+            <h1>Impressum</h1>
+            <p class="page-description">Angaben gemäß § 5 TMG</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Anbieter</h2>
+            <p>
+                <strong>Innovarco UG (haftungsbeschränkt)</strong><br>
+                Abelke-Bleken-Ring 18a<br>
+                21037 Hamburg<br>
+                Deutschland
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>Vertreten durch</h2>
+            <p>Geschäftsführer: Rico Möller</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Kontakt</h2>
+            <div class="info-grid">
+                <div class="info-row">
+                    <span class="info-label">Telefon:</span>
+                    <span class="info-value">+49 (0)175 1969035</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">E-Mail:</span>
+                    <span class="info-value"><a href="mailto:hitmeup@innovarco.de">hitmeup@innovarco.de</a></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Umsatzsteuer-ID</h2>
+            <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:<br>
+            <strong>DE 451767796</strong></p>
+        </div>
+
+        <div class="content-section">
+            <h2>Haftungsausschluss</h2>
+            <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+            <p>Die Inhalte dieser App und Website wurden mit größtmöglicher Sorgfalt erstellt, dennoch übernehmen wir keine Gewähr für deren Richtigkeit, Vollständigkeit und Aktualität. Änderungen und Irrtümer bleiben vorbehalten.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Datenschutz</h2>
+            <p>Informationen zum Datenschutz finden Sie in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="datenschutz.html">Datenschutz</a>
+            <a href="agb.html">AGB</a>
+            <a href="impressum.html">Impressum</a>
+        </div>
+        <div class="copyright">
+            © 2025 TapStock. Alle Rechte vorbehalten.
+        </div>
+    </footer>
+</body>
+</html>
