@@ -1,0 +1,5 @@
+# TapStock Website Config
+# Wichtig: .well-known Ordner einbinden für Universal Links
+
+include:
+  - .well-known

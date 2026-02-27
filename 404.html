@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TapStock</title>
+  <script>
+    // GitHub Pages Routing Workaround
+    // Leitet dynamische Pfade wie /join/ABC123 oder /spot/uuid zur richtigen Seite
+    
+    const path = window.location.pathname;
+    
+    if (path.startsWith('/join/')) {
+      // Lade join/index.html aber behalte die URL
+      window.location.replace('/join/' + '?code=' + path.split('/join/')[1]);
+    } else if (path.startsWith('/spot/')) {
+      // Lade spot/index.html aber behalte die URL  
+      window.location.replace('/spot/' + '?id=' + path.split('/spot/')[1]);
+    } else {
+      // Unbekannter Pfad - zur Startseite
+      window.location.replace('/');
+    }
+  </script>
+</head>
+<body>
+  <p>Weiterleitung...</p>
+</body>
+</html>

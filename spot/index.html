@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TapStock - Bereich beitreten</title>
-  <meta name="description" content="Tritt einem geteilten Bereich in TapStock bei.">
+  <title>TapStock - Spot öffnen</title>
+  <meta name="description" content="Öffne diesen Spot in TapStock.">
   
   <!-- Open Graph -->
-  <meta property="og:title" content="TapStock - Bereich beitreten">
-  <meta property="og:description" content="Du wurdest eingeladen, einem Bereich in TapStock beizutreten.">
+  <meta property="og:title" content="TapStock - Spot öffnen">
+  <meta property="og:description" content="Scanne den NFC-Tag um diesen Spot in TapStock zu öffnen.">
   <meta property="og:type" content="website">
   
   <style>
@@ -66,6 +66,11 @@
       margin-bottom: 24px;
     }
     
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    
     .card-title {
       font-size: 18px;
       font-weight: 600;
@@ -75,19 +80,6 @@
     .card-text {
       font-size: 14px;
       color: #8E8E93;
-    }
-    
-    .code {
-      font-family: 'SF Mono', Monaco, monospace;
-      background: rgba(0, 212, 116, 0.1);
-      color: #00D474;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: 18px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      margin-top: 12px;
-      display: inline-block;
     }
     
     .btn {
@@ -194,14 +186,14 @@
 </head>
 <body>
   <div class="container">
-    <div class="logo">📦</div>
+    <div class="logo">📍</div>
     <h1 class="brand">Tap<span>Stock</span></h1>
-    <p class="subtitle">Du wurdest eingeladen, einem geteilten Bereich beizutreten.</p>
+    <p class="subtitle">Du hast einen TapStock NFC-Tag gescannt.</p>
     
     <div class="card">
-      <p class="card-title">Einladungscode</p>
-      <p class="card-text">Öffne TapStock und tritt mit diesem Code bei:</p>
-      <div class="code" id="shareCode">...</div>
+      <div class="card-icon">📱</div>
+      <p class="card-title">Spot öffnen</p>
+      <p class="card-text">Öffne die TapStock App um den Inhalt dieses Spots anzuzeigen.</p>
     </div>
     
     <a href="#" id="openAppBtn" class="btn btn-primary">
@@ -238,29 +230,20 @@
   </div>
 
   <script>
-    // Share Code aus URL extrahieren (Pfad oder Query Parameter)
+    // Spot ID aus URL extrahieren (Pfad oder Query Parameter)
     const path = window.location.pathname;
     const params = new URLSearchParams(window.location.search);
     
-    let shareCode = null;
-    const codeMatch = path.match(/\/join\/([A-Z0-9]+)/i);
-    if (codeMatch) {
-      shareCode = codeMatch[1];
-    } else if (params.get('code')) {
-      shareCode = params.get('code');
-    }
-    
-    // Code anzeigen
-    const codeElement = document.getElementById('shareCode');
-    if (shareCode) {
-      codeElement.textContent = shareCode;
-    } else {
-      codeElement.textContent = 'Ungültiger Link';
+    let spotId = null;
+    const spotMatch = path.match(/\/spot\/([a-zA-Z0-9-]+)/i);
+    if (spotMatch) {
+      spotId = spotMatch[1];
+    } else if (params.get('id')) {
+      spotId = params.get('id');
     }
     
     // Deep Link URL
-    const deepLink = shareCode ? `tapstock://tapstock.com/join/${shareCode}` : null;
-    const universalLink = shareCode ? `https://tapstock.com/join/${shareCode}` : null;
+    const deepLink = spotId ? `tapstock://tapstock.com/spot?spotId=${spotId}` : null;
     
     // "In App öffnen" Button
     const openAppBtn = document.getElementById('openAppBtn');
@@ -269,7 +252,10 @@
     openAppBtn.addEventListener('click', function(e) {
       e.preventDefault();
       
-      if (!deepLink) return;
+      if (!deepLink) {
+        alert('Ungültiger Link');
+        return;
+      }
       
       loading.classList.add('active');
       
@@ -282,15 +268,12 @@
       }, 2500);
     });
     
-    // Automatisch versuchen App zu öffnen (optional)
-    // Auskommentiert, da es auf manchen Geräten störend sein kann
-    /*
+    // Automatisch versuchen App zu öffnen bei NFC-Scans
     if (deepLink) {
       setTimeout(function() {
         window.location.href = deepLink;
-      }, 500);
+      }, 300);
     }
-    */
     
     // Platform-spezifischen Store-Button hervorheben
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
