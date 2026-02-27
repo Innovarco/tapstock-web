@@ -1,0 +1,27 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [
+          "TD2JTG9ZWP.com.innovarco.tapstock"
+        ],
+        "components": [
+          {
+            "/": "/join/*",
+            "comment": "Join Area via Share Code"
+          },
+          {
+            "/": "/spot/*",
+            "comment": "Open Spot via NFC"
+          }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "TD2JTG9ZWP.com.innovarco.tapstock"
+    ]
+  }
+}
