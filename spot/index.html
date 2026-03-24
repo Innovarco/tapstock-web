@@ -61,6 +61,37 @@
             width: 100%;
         }
         
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .lang-btn {
+            background: var(--bg-surface2);
+            border: 1px solid var(--bg-surface3);
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            border-color: var(--primary);
+            color: var(--text-primary);
+        }
+        
+        .lang-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--bg-primary);
+        }
+        
         .logo {
             display: flex;
             align-items: center;
@@ -110,6 +141,7 @@
             justify-content: center;
             margin: 0 auto 16px;
             font-size: 28px;
+            position: relative;
         }
         
         .card-title {
@@ -252,10 +284,9 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 120px;
-            height: 120px;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            opacity: 0.15;
         }
         
         .nfc-pulse::before,
@@ -268,26 +299,27 @@
             border: 2px solid var(--primary);
             border-radius: 50%;
             animation: pulse 2s ease-out infinite;
+            opacity: 0.4;
         }
         
         .nfc-pulse::before {
-            width: 80px;
-            height: 80px;
+            width: 50px;
+            height: 50px;
         }
         
         .nfc-pulse::after {
-            width: 120px;
-            height: 120px;
+            width: 70px;
+            height: 70px;
             animation-delay: 0.5s;
         }
         
         @keyframes pulse {
             0% {
                 transform: translate(-50%, -50%) scale(0.8);
-                opacity: 1;
+                opacity: 0.4;
             }
             100% {
-                transform: translate(-50%, -50%) scale(1.5);
+                transform: translate(-50%, -50%) scale(1.4);
                 opacity: 0;
             }
         }
@@ -300,30 +332,35 @@
     </style>
 </head>
 <body>
+    <div class="lang-toggle">
+        <button class="lang-btn" data-lang="de">DE</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    
     <div class="container">
         <div class="logo">
             <img src="/favicon.png" alt="TapStock" class="logo-icon">
             <h1 class="brand">Tap<span>Stock</span></h1>
         </div>
-        <p class="subtitle">Du hast einen TapStock NFC-Tag gescannt.</p>
+        <p class="subtitle" data-i18n="subtitle">Du hast einen TapStock NFC-Tag gescannt.</p>
         
         <div class="card">
             <div class="card-icon">
                 <div class="nfc-pulse"></div>
                 📍
             </div>
-            <p class="card-title">Spot öffnen</p>
-            <p class="card-text">Öffne die TapStock App um den Inhalt dieses Spots anzuzeigen.</p>
+            <p class="card-title" data-i18n="cardTitle">Spot öffnen</p>
+            <p class="card-text" data-i18n="cardText">Öffne die TapStock App um den Inhalt dieses Spots anzuzeigen.</p>
         </div>
         
         <a href="#" id="openAppBtn" class="btn btn-primary">
             <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
             </svg>
-            In TapStock öffnen
+            <span data-i18n="openInApp">In TapStock öffnen</span>
         </a>
         
-        <div class="divider">App noch nicht installiert?</div>
+        <div class="divider" data-i18n="divider">App noch nicht installiert?</div>
         
         <div class="store-buttons">
             <a href="https://apps.apple.com/app/tapstock/id0000000000" class="btn btn-secondary" id="appStoreBtn">
@@ -343,16 +380,71 @@
         
         <div class="loading" id="loading">
             <div class="spinner"></div>
-            <p style="font-size: 14px; color: var(--text-secondary);">App wird geöffnet...</p>
+            <p style="font-size: 14px; color: var(--text-secondary);" data-i18n="loading">App wird geöffnet...</p>
         </div>
         
         <div class="footer">
-            <p>© 2025 Innovarco UG · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></p>
+            <p>© 2025 Innovarco UG · <a href="/impressum.html" data-i18n="imprint">Impressum</a> · <a href="/datenschutz.html" data-i18n="privacy">Datenschutz</a></p>
         </div>
     </div>
 
     <script>
-        // Spot ID aus URL extrahieren (Pfad oder Query Parameter)
+        // Translations
+        const translations = {
+            de: {
+                subtitle: 'Du hast einen TapStock NFC-Tag gescannt.',
+                cardTitle: 'Spot öffnen',
+                cardText: 'Öffne die TapStock App um den Inhalt dieses Spots anzuzeigen.',
+                openInApp: 'In TapStock öffnen',
+                divider: 'App noch nicht installiert?',
+                loading: 'App wird geöffnet...',
+                imprint: 'Impressum',
+                privacy: 'Datenschutz'
+            },
+            en: {
+                subtitle: 'You scanned a TapStock NFC tag.',
+                cardTitle: 'Open Spot',
+                cardText: 'Open the TapStock app to view the contents of this spot.',
+                openInApp: 'Open in TapStock',
+                divider: 'App not installed yet?',
+                loading: 'Opening app...',
+                imprint: 'Legal Notice',
+                privacy: 'Privacy Policy'
+            }
+        };
+        
+        // Language management
+        let currentLang = localStorage.getItem('tapstock-lang') || 
+                          (navigator.language.startsWith('de') ? 'de' : 'en');
+        
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('tapstock-lang', lang);
+            document.documentElement.lang = lang;
+            
+            // Update toggle buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            
+            // Update text content
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+        }
+        
+        // Initialize language
+        setLanguage(currentLang);
+        
+        // Language toggle click handlers
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+        });
+        
+        // Spot ID extraction
         const path = window.location.pathname;
         const params = new URLSearchParams(window.location.search);
         
@@ -367,7 +459,7 @@
         // Deep Link URL
         const deepLink = spotId ? `tapstock://tapstock.com/spot?spotId=${spotId}` : null;
         
-        // "In App öffnen" Button
+        // "Open in App" Button
         const openAppBtn = document.getElementById('openAppBtn');
         const loading = document.getElementById('loading');
         
@@ -375,29 +467,26 @@
             e.preventDefault();
             
             if (!deepLink) {
-                alert('Ungültiger Link');
+                alert(currentLang === 'de' ? 'Ungültiger Link' : 'Invalid link');
                 return;
             }
             
             loading.classList.add('active');
-            
-            // Versuche App zu öffnen
             window.location.href = deepLink;
             
-            // Fallback nach 2.5 Sekunden
             setTimeout(function() {
                 loading.classList.remove('active');
             }, 2500);
         });
         
-        // Automatisch versuchen App zu öffnen bei NFC-Scans
+        // Auto-open app on NFC scan
         if (deepLink) {
             setTimeout(function() {
                 window.location.href = deepLink;
             }, 300);
         }
         
-        // Platform-spezifischen Store-Button hervorheben
+        // Platform-specific store button
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
         const isAndroid = /Android/.test(navigator.userAgent);
         
