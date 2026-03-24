@@ -762,22 +762,27 @@
         }
 
         .product-card {
-            background: var(--bg-secondary);
+            background: linear-gradient(145deg, var(--bg-secondary) 0%, #141416 100%);
             border: 1px solid var(--bg-surface2);
             border-radius: var(--radius);
             padding: 28px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .product-card:hover {
             border-color: var(--primary);
             transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.15);
         }
 
         .product-card.featured {
             border-color: var(--primary);
+            background: linear-gradient(145deg, #1f1a14 0%, #141416 100%);
         }
 
         .product-card.featured::before {
@@ -787,7 +792,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: var(--primary);
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary-light));
         }
 
         .product-badge {
@@ -803,9 +808,13 @@
             text-transform: uppercase;
         }
 
+        .product-badge.best-value {
+            background: var(--success);
+        }
+
         .product-icon {
-            width: 80px;
-            height: 80px;
+            width: 100%;
+            height: 160px;
             background: var(--bg-surface2);
             border-radius: var(--radius-sm);
             display: flex;
@@ -832,6 +841,7 @@
             font-size: 0.9rem;
             line-height: 1.6;
             margin-bottom: 20px;
+            flex-grow: 1;
         }
 
         .product-specs {
@@ -1519,6 +1529,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-current">2,99€</span>
+                        <span class="price-per" data-i18n="shop.pricePerChipBasic">0,60€ pro Chip</span>
                     </div>
                     <a href="#" target="_blank" class="product-btn secondary" data-i18n="shop.buyNow">Jetzt kaufen</a>
                 </div>
@@ -1536,12 +1547,14 @@
                     </div>
                     <div class="product-price">
                         <span class="price-current">4,99€</span>
+                        <span class="price-per" data-i18n="shop.pricePerChip5">1,00€ pro Chip</span>
                     </div>
                     <a href="#" target="_blank" class="product-btn" data-i18n="shop.buyNow">Jetzt kaufen</a>
                 </div>
 
                 <!-- TapStock 15er -->
                 <div class="product-card">
+                    <div class="product-badge best-value" data-i18n="shop.bestValue">Bester Preis</div>
                     <div class="product-icon"><img src="nfc_chips.jpg" alt="TapStock 15er"></div>
                     <h3 class="product-name" data-i18n="shop.design15.name">TapStock 15er</h3>
                     <p class="product-description" data-i18n="shop.design15.desc">Das Komplettpaket für den ganzen Haushalt. Beste Preis-Leistung.</p>
@@ -1714,8 +1727,11 @@
                 'shop.design15.name': 'TapStock 15er',
                 'shop.design15.desc': 'Das Komplettpaket für den ganzen Haushalt. Beste Preis-Leistung.',
                 'shop.design15.chips': '15 NFC Chips',
+                'shop.pricePerChipBasic': '0,60€ pro Chip',
+                'shop.pricePerChip5': '1,00€ pro Chip',
                 'shop.pricePerChip15': '0,87€ pro Chip',
                 'shop.popular': 'Beliebt',
+                'shop.bestValue': 'Bester Preis',
                 'shop.buyNow': 'Jetzt kaufen',
                 'shop.compatibility.title': 'Kompatibilität',
                 'shop.compatibility.text': 'Alle NFC-Chips sind NTAG215-kompatibel und funktionieren mit:',
@@ -1844,8 +1860,11 @@
                 'shop.design15.name': 'TapStock 15-Pack',
                 'shop.design15.desc': 'The complete package for your entire home. Best value.',
                 'shop.design15.chips': '15 NFC Chips',
+                'shop.pricePerChipBasic': '€0.60 per chip',
+                'shop.pricePerChip5': '€1.00 per chip',
                 'shop.pricePerChip15': '€0.87 per chip',
                 'shop.popular': 'Popular',
+                'shop.bestValue': 'Best Value',
                 'shop.buyNow': 'Buy Now',
                 'shop.compatibility.title': 'Compatibility',
                 'shop.compatibility.text': 'All NFC chips are NTAG215 compatible and work with:',
