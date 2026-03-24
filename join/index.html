@@ -62,11 +62,10 @@
         }
         
         .lang-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
             display: flex;
+            justify-content: flex-end;
             gap: 8px;
+            margin-bottom: 24px;
         }
         
         .lang-btn {
@@ -300,12 +299,12 @@
     </style>
 </head>
 <body>
-    <div class="lang-toggle">
-        <button class="lang-btn" data-lang="de">DE</button>
-        <button class="lang-btn" data-lang="en">EN</button>
-    </div>
-    
     <div class="container">
+        <div class="lang-toggle">
+            <button class="lang-btn" data-lang="de">DE</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        
         <div class="logo">
             <img src="/favicon.png" alt="TapStock" class="logo-icon">
             <h1 class="brand">Tap<span>Stock</span></h1>
