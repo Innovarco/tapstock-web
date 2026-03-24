@@ -105,6 +105,7 @@
             font-size: 0.9rem;
             font-weight: 500;
             transition: color 0.3s ease;
+            cursor: pointer;
         }
 
         .nav-links a:hover {
@@ -803,15 +804,21 @@
         }
 
         .product-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--primary-alpha);
+            width: 80px;
+            height: 80px;
+            background: var(--bg-surface2);
             border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
-            font-size: 1.8rem;
+            overflow: hidden;
+        }
+
+        .product-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .product-name {
@@ -1500,62 +1507,60 @@
             </div>
 
             <div class="products-grid">
-                <!-- Starter Pack -->
+                <!-- Basic Pack -->
                 <div class="product-card">
-                    <div class="product-icon">📦</div>
-                    <h3 class="product-name" data-i18n="shop.starter.name">Starter Pack</h3>
-                    <p class="product-description" data-i18n="shop.starter.desc">Perfekt zum Ausprobieren. Genug für Kühlschrank, Gefrierschrank und Vorratsschrank.</p>
+                    <div class="product-icon"><img src="nfc_chips.jpg" alt="Basic Pack"></div>
+                    <h3 class="product-name" data-i18n="shop.basic.name">Basic Pack</h3>
+                    <p class="product-description" data-i18n="shop.basic.desc">Einfache NFC-Sticker zum Einstieg. Funktional und günstig.</p>
                     <div class="product-specs">
-                        <span class="product-spec" data-i18n="shop.starter.chips">5 NFC Chips</span>
+                        <span class="product-spec" data-i18n="shop.basic.chips">5 NFC Chips</span>
                         <span class="product-spec">NTAG215</span>
                         <span class="product-spec">25mm Ø</span>
                     </div>
                     <div class="product-price">
-                        <span class="price-current">7,99€</span>
-                        <span class="price-per" data-i18n="shop.pricePerChip">1,60€ pro Chip</span>
+                        <span class="price-current">2,99€</span>
                     </div>
-                    <a href="https://www.amazon.de/s?k=nfc+sticker+ntag215" target="_blank" class="product-btn secondary" data-i18n="shop.buyOnAmazon">Auf Amazon kaufen</a>
+                    <a href="#" target="_blank" class="product-btn secondary" data-i18n="shop.buyNow">Jetzt kaufen</a>
                 </div>
 
-                <!-- Family Pack -->
+                <!-- TapStock 5er -->
                 <div class="product-card featured">
                     <div class="product-badge" data-i18n="shop.popular">Beliebt</div>
-                    <div class="product-icon">🏠</div>
-                    <h3 class="product-name" data-i18n="shop.family.name">Family Pack</h3>
-                    <p class="product-description" data-i18n="shop.family.desc">Für den ganzen Haushalt. Küche, Keller, Garage, Abstellkammer – alles abgedeckt.</p>
+                    <div class="product-icon"><img src="nfc_chips.jpg" alt="TapStock 5er"></div>
+                    <h3 class="product-name" data-i18n="shop.design5.name">TapStock 5er</h3>
+                    <p class="product-description" data-i18n="shop.design5.desc">Premium NFC-Chips im TapStock Design. Hochwertig und stylisch.</p>
                     <div class="product-specs">
-                        <span class="product-spec" data-i18n="shop.family.chips">15 NFC Chips</span>
+                        <span class="product-spec" data-i18n="shop.design5.chips">5 NFC Chips</span>
                         <span class="product-spec">NTAG215</span>
-                        <span class="product-spec">25mm Ø</span>
+                        <span class="product-spec">TapStock Design</span>
                     </div>
                     <div class="product-price">
-                        <span class="price-current">14,99€</span>
-                        <span class="price-per" data-i18n="shop.pricePerChipFamily">1,00€ pro Chip</span>
+                        <span class="price-current">4,99€</span>
                     </div>
-                    <a href="https://www.amazon.de/s?k=nfc+sticker+ntag215+15+st%C3%BCck" target="_blank" class="product-btn" data-i18n="shop.buyOnAmazon">Auf Amazon kaufen</a>
+                    <a href="#" target="_blank" class="product-btn" data-i18n="shop.buyNow">Jetzt kaufen</a>
                 </div>
 
-                <!-- Pro Pack -->
+                <!-- TapStock 15er -->
                 <div class="product-card">
-                    <div class="product-icon">🏢</div>
-                    <h3 class="product-name" data-i18n="shop.pro.name">Pro Pack</h3>
-                    <p class="product-description" data-i18n="shop.pro.desc">Für Power-User und kleine Unternehmen. Maximale Flexibilität für jedes Inventar-Projekt.</p>
+                    <div class="product-icon"><img src="nfc_chips.jpg" alt="TapStock 15er"></div>
+                    <h3 class="product-name" data-i18n="shop.design15.name">TapStock 15er</h3>
+                    <p class="product-description" data-i18n="shop.design15.desc">Das Komplettpaket für den ganzen Haushalt. Beste Preis-Leistung.</p>
                     <div class="product-specs">
-                        <span class="product-spec" data-i18n="shop.pro.chips">30 NFC Chips</span>
+                        <span class="product-spec" data-i18n="shop.design15.chips">15 NFC Chips</span>
                         <span class="product-spec">NTAG215</span>
-                        <span class="product-spec">25mm Ø</span>
+                        <span class="product-spec">TapStock Design</span>
                     </div>
                     <div class="product-price">
-                        <span class="price-current">24,99€</span>
-                        <span class="price-per" data-i18n="shop.pricePerChipPro">0,83€ pro Chip</span>
+                        <span class="price-current">12,99€</span>
+                        <span class="price-per" data-i18n="shop.pricePerChip15">0,87€ pro Chip</span>
                     </div>
-                    <a href="https://www.amazon.de/s?k=nfc+sticker+ntag215+30+st%C3%BCck" target="_blank" class="product-btn secondary" data-i18n="shop.buyOnAmazon">Auf Amazon kaufen</a>
+                    <a href="#" target="_blank" class="product-btn secondary" data-i18n="shop.buyNow">Jetzt kaufen</a>
                 </div>
             </div>
 
             <div class="shop-info">
                 <h3>📡 <span data-i18n="shop.compatibility.title">Kompatibilität</span></h3>
-                <p data-i18n="shop.compatibility.text">Alle empfohlenen NFC-Chips sind NTAG215-kompatibel und funktionieren mit:</p>
+                <p data-i18n="shop.compatibility.text">Alle NFC-Chips sind NTAG215-kompatibel und funktionieren mit:</p>
                 <ul>
                     <li data-i18n="shop.compatibility.item1">iPhone 7 und neuer (iOS 14+)</li>
                     <li data-i18n="shop.compatibility.item2">Alle Android-Geräte mit NFC</li>
@@ -1573,7 +1578,7 @@
                 </ul>
             </div>
 
-            <p class="affiliate-note" data-i18n="shop.affiliateNote">* Die Links führen zu Amazon. Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</p>
+            <p class="affiliate-note" data-i18n="shop.shippingNote">Versand innerhalb Deutschlands. Lieferzeit 2-5 Werktage. zzgl. X,XX€ Versandkosten (Briefversand).</p>
         </div>
     </div>
 
@@ -1700,22 +1705,20 @@
                 'nav.shop': 'NFC Chips',
                 'shop.title': 'NFC Chips kaufen',
                 'shop.description': 'Hochwertige NFC-Sticker für TapStock. Einfach aufkleben, scannen und loslegen – kompatibel mit allen iPhones.',
-                'shop.starter.name': 'Starter Pack',
-                'shop.starter.desc': 'Perfekt zum Ausprobieren. Genug für Kühlschrank, Gefrierschrank und Vorratsschrank.',
-                'shop.starter.chips': '5 NFC Chips',
-                'shop.pricePerChip': '1,60€ pro Chip',
-                'shop.family.name': 'Family Pack',
-                'shop.family.desc': 'Für den ganzen Haushalt. Küche, Keller, Garage, Abstellkammer – alles abgedeckt.',
-                'shop.family.chips': '15 NFC Chips',
-                'shop.pricePerChipFamily': '1,00€ pro Chip',
-                'shop.pro.name': 'Pro Pack',
-                'shop.pro.desc': 'Für Power-User und kleine Unternehmen. Maximale Flexibilität für jedes Inventar-Projekt.',
-                'shop.pro.chips': '30 NFC Chips',
-                'shop.pricePerChipPro': '0,83€ pro Chip',
+                'shop.basic.name': 'Basic Pack',
+                'shop.basic.desc': 'Einfache NFC-Sticker zum Einstieg. Funktional und günstig.',
+                'shop.basic.chips': '5 NFC Chips',
+                'shop.design5.name': 'TapStock 5er',
+                'shop.design5.desc': 'Premium NFC-Chips im TapStock Design. Hochwertig und stylisch.',
+                'shop.design5.chips': '5 NFC Chips',
+                'shop.design15.name': 'TapStock 15er',
+                'shop.design15.desc': 'Das Komplettpaket für den ganzen Haushalt. Beste Preis-Leistung.',
+                'shop.design15.chips': '15 NFC Chips',
+                'shop.pricePerChip15': '0,87€ pro Chip',
                 'shop.popular': 'Beliebt',
-                'shop.buyOnAmazon': 'Auf Amazon kaufen',
+                'shop.buyNow': 'Jetzt kaufen',
                 'shop.compatibility.title': 'Kompatibilität',
-                'shop.compatibility.text': 'Alle empfohlenen NFC-Chips sind NTAG215-kompatibel und funktionieren mit:',
+                'shop.compatibility.text': 'Alle NFC-Chips sind NTAG215-kompatibel und funktionieren mit:',
                 'shop.compatibility.item1': 'iPhone 7 und neuer (iOS 14+)',
                 'shop.compatibility.item2': 'Alle Android-Geräte mit NFC',
                 'shop.compatibility.item3': 'TapStock App (iOS & Android)',
@@ -1724,7 +1727,7 @@
                 'shop.tips.item2': 'Vermeide Metalloberflächen (stört das NFC-Signal)',
                 'shop.tips.item3': 'Die Chips sind wasserfest und für Gefrierschränke geeignet',
                 'shop.tips.item4': 'Beschrifte die Chips für schnelle visuelle Identifikation',
-                'shop.affiliateNote': '* Die Links führen zu Amazon. Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.'
+                'shop.shippingNote': 'Versand innerhalb Deutschlands. Lieferzeit 2-5 Werktage. zzgl. X,XX€ Versandkosten (Briefversand).'
             },
             en: {
                 'nav.features': 'Features',
@@ -1832,22 +1835,20 @@
                 'nav.shop': 'NFC Chips',
                 'shop.title': 'Buy NFC Chips',
                 'shop.description': 'High-quality NFC stickers for TapStock. Simply stick, scan and go – compatible with all iPhones.',
-                'shop.starter.name': 'Starter Pack',
-                'shop.starter.desc': 'Perfect for trying out. Enough for fridge, freezer and pantry.',
-                'shop.starter.chips': '5 NFC Chips',
-                'shop.pricePerChip': '€1.60 per chip',
-                'shop.family.name': 'Family Pack',
-                'shop.family.desc': 'For the whole household. Kitchen, basement, garage, storage room – everything covered.',
-                'shop.family.chips': '15 NFC Chips',
-                'shop.pricePerChipFamily': '€1.00 per chip',
-                'shop.pro.name': 'Pro Pack',
-                'shop.pro.desc': 'For power users and small businesses. Maximum flexibility for any inventory project.',
-                'shop.pro.chips': '30 NFC Chips',
-                'shop.pricePerChipPro': '€0.83 per chip',
+                'shop.basic.name': 'Basic Pack',
+                'shop.basic.desc': 'Simple NFC stickers to get started. Functional and affordable.',
+                'shop.basic.chips': '5 NFC Chips',
+                'shop.design5.name': 'TapStock 5-Pack',
+                'shop.design5.desc': 'Premium NFC chips with TapStock design. High-quality and stylish.',
+                'shop.design5.chips': '5 NFC Chips',
+                'shop.design15.name': 'TapStock 15-Pack',
+                'shop.design15.desc': 'The complete package for your entire home. Best value.',
+                'shop.design15.chips': '15 NFC Chips',
+                'shop.pricePerChip15': '€0.87 per chip',
                 'shop.popular': 'Popular',
-                'shop.buyOnAmazon': 'Buy on Amazon',
+                'shop.buyNow': 'Buy Now',
                 'shop.compatibility.title': 'Compatibility',
-                'shop.compatibility.text': 'All recommended NFC chips are NTAG215 compatible and work with:',
+                'shop.compatibility.text': 'All NFC chips are NTAG215 compatible and work with:',
                 'shop.compatibility.item1': 'iPhone 7 and newer (iOS 14+)',
                 'shop.compatibility.item2': 'All Android devices with NFC',
                 'shop.compatibility.item3': 'TapStock App (iOS & Android)',
@@ -1856,7 +1857,7 @@
                 'shop.tips.item2': 'Avoid metal surfaces (interferes with NFC signal)',
                 'shop.tips.item3': 'The chips are waterproof and suitable for freezers',
                 'shop.tips.item4': 'Label the chips for quick visual identification',
-                'shop.affiliateNote': '* Links lead to Amazon. As an Amazon Associate we earn from qualifying purchases.'
+                'shop.shippingNote': 'Shipping within Germany. Delivery 2-5 business days. Plus €X.XX shipping (letter mail).'
             }
         };
 
